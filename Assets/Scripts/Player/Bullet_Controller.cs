@@ -21,8 +21,8 @@ public class Bullet_Controller : MonoBehaviour
     private void OnEnable()
     {
         // get vfx back to bullet
-        blood_VFX.transform.SetParent(transform);
-        blood_VFX.transform.localPosition = Vector3.zero;
+/*        blood_VFX.transform.SetParent(transform);
+        blood_VFX.transform.localPosition = Vector3.zero;*/
 
         // if bullet flies for a long time - back it to pull
         StartCoroutine(Wait_And_Back_To_Pool());
@@ -43,6 +43,8 @@ public class Bullet_Controller : MonoBehaviour
     {
         transform.gameObject.SetActive(false);
 
+        blood_VFX.Stop();
+
         speed = start_speed;
         transform.localPosition = bullet_pool.transform.localPosition;
 
@@ -55,7 +57,6 @@ public class Bullet_Controller : MonoBehaviour
         {
             speed = 0;
 
-            blood_VFX.transform.SetParent(null);
             blood_VFX.Play();
 
             // select target to deduct health
@@ -67,7 +68,13 @@ public class Bullet_Controller : MonoBehaviour
             if (other.GetComponent<Enemy_Controller_Patrool>() != null)
                 other.GetComponent<Enemy_Controller_Patrool>().Deduct_Health(damage);
 
-            Refresh_Before_Pool();
+            StartCoroutine(Before_Pool_Delay());
         }
+    }
+
+    IEnumerator Before_Pool_Delay()
+    {
+        yield return new WaitForSeconds(1);
+        Refresh_Before_Pool();
     }
 }
