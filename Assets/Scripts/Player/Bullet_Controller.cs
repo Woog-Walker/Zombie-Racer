@@ -6,9 +6,10 @@ public class Bullet_Controller : MonoBehaviour
 {
     [SerializeField] float damage;
     [SerializeField] float speed;
+    [Space]
     [SerializeField] ParticleSystem blood_VFX;
-
     [SerializeField] Transform bullet_pool;
+    [SerializeField] Transform bullet_GFX;
 
     float start_speed;
     private const string enemy_tag = "Enemy";
@@ -43,6 +44,8 @@ public class Bullet_Controller : MonoBehaviour
     {
         transform.gameObject.SetActive(false);
 
+        bullet_GFX.gameObject.SetActive(true);
+
         blood_VFX.Stop();
 
         speed = start_speed;
@@ -58,6 +61,7 @@ public class Bullet_Controller : MonoBehaviour
             speed = 0;
 
             blood_VFX.Play();
+            bullet_GFX.gameObject.SetActive(false);
 
             // select target to deduct health
             // pref enemy types via enums or abstract class but to save time -> next method

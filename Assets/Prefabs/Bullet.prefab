@@ -28922,6 +28922,7 @@ MonoBehaviour:
   speed: 75
   blood_VFX: {fileID: 5382466761856522482}
   bullet_pool: {fileID: 0}
+  bullet_GFX: {fileID: 932519719685779452}
 --- !u!65 &7838797790275029405
 BoxCollider:
   m_ObjectHideFlags: 0

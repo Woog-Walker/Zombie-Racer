@@ -4606,6 +4606,11 @@ PrefabInstance:
       propertyPath: bullet_pool
       value: 
       objectReference: {fileID: 147325947}
+    - target: {fileID: 2914455263929078459, guid: ed84566da093f02468e0e24bd21438d8,
+        type: 3}
+      propertyPath: touch_rotation_speed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4269651029425840645, guid: ed84566da093f02468e0e24bd21438d8,
         type: 3}
       propertyPath: headerSettings.fontSize
